@@ -3,6 +3,8 @@
 
 import React from 'react';
 
+// Hola sofi
+
 const Label = ({ text, htmlFor }) => {
     return (
         <label htmlFor={htmlFor}>
