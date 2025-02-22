@@ -1,5 +1,6 @@
 import React from "react";
 import FormRegistroActividad from "./FormRegistroActividad";
+import Filtrado from "./Filtrado"
 import { Alert, Typography, Container, Box } from "@mui/material";
 import Logout from "./Logout";
 import Listado from "./Listado";
@@ -63,6 +64,7 @@ const Dashboard = () => {
           Dashboard
         </Typography>
         <FormRegistroActividad></FormRegistroActividad>
+        {/* <Filtrado></Filtrado> */}
         <Listado></Listado>
       </Box>
     </Container>
