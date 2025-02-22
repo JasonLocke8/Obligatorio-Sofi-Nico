@@ -71,11 +71,7 @@ const LoginForm = () => {
   return (
     <Container component="main" maxWidth="xs">
 
-
-
       {mostrarAlert && <Alert severity="error"> {mensajeDeError} </Alert> }
-
-
 
       <Box
         sx={{
@@ -139,28 +135,6 @@ const LoginForm = () => {
         </Box>
       </Box>
     </Container>
-
-    /*<form onSubmit={handleLogin}>  cuando se presiona el botón "Ingresar", se activa el evento onSubmit y ejecuta la función handleLogin }
-            <h2>Login</h2>
-            <Label text="Usuario: " />
-            <CampoInput
-                type="text"
-                placeholder=""
-                name = "username"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}    // onChange: evento de React que se dispara cada vez que el usuario escribe en el input. 
-                                                                // React re-renderiza el componente con el nuevo valor
-            />
-            <Label text="Contraseña: " />
-            <CampoInput
-                type="password"
-                placeholder=""
-                name = "password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-            />
-            <Boton text="Ingresar" disabled={deshabilitar} />
-        </form>*/
   );
 };
 

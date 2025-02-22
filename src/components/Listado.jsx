@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from "react";
 import { eliminarRegistro as eliminarAPI } from "../services/eliminarRegistro";
 import { eliminarRegistro as eliminarRedux } from "../redux/features/sliceRegistros";
-import { obtenerActividades } from "../services/obtenerActividades";
 import { useSelector, useDispatch } from "react-redux";
 import {
   Table,
@@ -19,38 +18,19 @@ import {
 } from "@mui/material";
 
 const Listado = () => {
-  const [registros, setRegistros] = useState([]);
 
-  const [actividades, setActividades] = useState([]);
+  const [registros, setRegistros] = useState([]);
   const urlImagenes = "https://movetrack.develotion.com/imgs/";
 
   const dispatch = useDispatch();
-
   const registros2 = useSelector((state) => state.sliceRegistros);
-
-  const cargarActividades = async () => {
-    try {
-      const actividades = await obtenerActividades();
-      setActividades(actividades);
-    } catch (error) {
-      console.error("Error al obtener las actividades:", error);
-    }
-  };
+  const actividades = useSelector((state) => state.sliceActividades);
 
   useEffect(() => {
-    cargarActividades();
-  }, []);
-
-  useEffect(() => {
-    //const registrosValidos = registros2.filter(registro => registro.id !== undefined);
-    // chequear que esta pasando aca, con lo nuevo de formar el obj parece que no es necesario esto, VER
-    //const validRegistros = registros2 || [];
     setRegistros(registros2);
-    //console.log(registros);
   }, [registros2]);
 
   const handleEliminarRegistro = async (e) => {
-    console.log(e.target.id);
 
     try {
       const resultado = await eliminarAPI(
@@ -60,7 +40,7 @@ const Listado = () => {
       );
       if (resultado.codigo == 200) {
         dispatch(eliminarRedux(e.target.id));
-        console.log("Registro eliminado correctamente");
+        // console.log("Registro eliminado correctamente");
       } else {
         console.error("Error al eliminar el registro");
         console.log(resultado);
@@ -74,16 +54,11 @@ const Listado = () => {
 
   const handleMostrarTodo = () => {
 
-    console.log("Mostrar todo");
-
     setRegistros(registros2);
-    
-    //console.log(dispatch(filtrarPorFecha("todo")));
+
   };
 
   const handleMostrarPorSemana = () => {
-    //dispatch(filtrarPorFecha("semana"));
-    console.log("Mostrar por semana");
     const hoy = new Date();
     const semanaPasada = new Date(hoy);
     semanaPasada.setDate(hoy.getDate() - 7);
@@ -99,8 +74,6 @@ const Listado = () => {
   };
 
   const handleMostrarPorMes = () => {
-    //dispatch(filtrarPorFecha("mes"));
-    console.log("Mostrar por mes");
     
     const hoy = new Date();
     const mesPasado = new Date(hoy);
@@ -146,7 +119,6 @@ const Listado = () => {
           </TableHead>
           <TableBody>
             {registros.map((registro) => {
-              // console.log("ID: ", registro.id);
 
               const actividad = actividades.find(
                 (actividad) => actividad.id === registro.idActividad

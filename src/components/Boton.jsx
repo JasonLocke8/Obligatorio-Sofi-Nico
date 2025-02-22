@@ -4,7 +4,6 @@
 import React from 'react';
 
 const Boton = ({ text, onClick, disabled }) => {
-  //holi
   return (
     <button onClick={onClick} disabled={disabled} >
       {text}

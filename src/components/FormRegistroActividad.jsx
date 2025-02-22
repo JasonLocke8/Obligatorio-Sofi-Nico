@@ -1,9 +1,9 @@
 /* eslint-disable no-unused-vars */
-import React, { useState, useEffect } from "react";
 /*import CampoInput from './CampoInput';
 import Boton from './Boton';
 import Label from './Label';
 import Select from './Select';*/
+import React, { useState, useEffect } from "react";
 import {
   TextField,
   Button,
@@ -15,7 +15,6 @@ import {
   Typography,
 } from "@mui/material";
 import { obtenerActividades } from "../services/obtenerActividades";
-import { registroActividad } from "../services/registroActividad";
 import { agregarRegistro } from "../redux/features/sliceRegistros";
 import { useDispatch } from "react-redux";
 
