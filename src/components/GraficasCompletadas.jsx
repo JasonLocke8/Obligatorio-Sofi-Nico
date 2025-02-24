@@ -28,6 +28,22 @@ const useActividades = () => {
   return devolverNombreActividad;
 };
 
+const generarEtiquetasYDatos = (resultadoGraficaMinutos) => {
+  const hoy = new Date();
+  const etiquetas2 = [];
+  const datos2 = [];
+
+  for (let i = 6; i >= 0; i--) {
+    const fecha = new Date();
+    fecha.setDate(hoy.getDate() - i);
+    const fechaStr = fecha.toISOString().split("T")[0];
+    etiquetas2.push(fechaStr);
+    datos2.push(resultadoGraficaMinutos[fechaStr] || 0);
+  }
+
+  return { etiquetas2, datos2 };
+};
+
 const GraficasCompletadas = () => {
   const convertirNombreActividad = useActividades();
   const registros = useSelector((state) => state.sliceRegistros);
@@ -42,7 +58,7 @@ const GraficasCompletadas = () => {
     }
     return acc;
   };
-
+  
   const resultado = registros.reduce(callback, {});
   const idActividades = Object.keys(resultado);
   const actividades = Object.values(resultado);
@@ -58,12 +74,12 @@ const GraficasCompletadas = () => {
   //   console.log(semanaPasada)
 
   //   if (new Date (val.fecha) >= semanaPasada ) {
-  //     const minutos = Number(val.tiempo) || 0;
-
+  //     const minutos = Number(val.tiempo) || 0; 
+  
   //     if (acc[fecha]) {
-  //       acc[fecha] += minutos;
+  //       acc[fecha] += minutos; 
   //     } else {
-  //       acc[fecha] = minutos;
+  //       acc[fecha] = minutos; 
   //     }
   //   }
   //   return acc;
@@ -72,6 +88,10 @@ const GraficasCompletadas = () => {
   //const resultadoGraficaMinutos = registros.reduce(callbackMinutos, {});
   // const etiquetas2 = Object.keys(resultadoGraficaMinutos).sort();
   // const datos2 = Object.values(resultadoGraficaMinutos);
+
+
+
+
 
   // Gráfico de minutos de los últimos siete días: se deberá mostrar la cantidad de minutos ejercitados cada día en la última semana.
 
@@ -95,17 +115,7 @@ const GraficasCompletadas = () => {
   };
 
   const resultadoGraficaMinutos = registros.reduce(callbackMinutos, {});
-  const hoy = new Date();
-  const etiquetas2 = [];
-  const datos2 = [];
-
-  for (let i = 6; i >= 0; i--) {
-    const fecha = new Date();
-    fecha.setDate(hoy.getDate() - i);
-    const fechaStr = fecha.toISOString().split("T")[0];
-    etiquetas2.push(fechaStr);
-    datos2.push(resultadoGraficaMinutos[fechaStr] || 0);
-  }
+  const { etiquetas2, datos2 } = generarEtiquetasYDatos(resultadoGraficaMinutos);
 
   return (
     <div>
@@ -118,7 +128,7 @@ const GraficasCompletadas = () => {
       <Grafica
         etiquetas={etiquetas2}
         datos={datos2}
-        nombreGrafica="Minutos de actividad por día"
+        nombreGrafica="Minutos por día"
         nombreDatos="Cantidad de minutos"
       />
     </div>
