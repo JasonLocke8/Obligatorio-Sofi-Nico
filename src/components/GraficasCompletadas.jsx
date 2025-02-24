@@ -43,50 +43,82 @@ const GraficasCompletadas = () => {
     return acc;
   };
 
-  const callbackMinutos = (acc, val) => { // FALTA, ver porque no se agregan los de exactamente hace una semana, y que se muestren todos los dias, no los que tienen solo registros
+  const resultado = registros.reduce(callback, {});
+  const idActividades = Object.keys(resultado);
+  const actividades = Object.values(resultado);
+  const cantSesiones = idActividades.map((id) => convertirNombreActividad(id));
+
+  // const callbackMinutos = (acc, val) => { // FALTA, ver porque no se agregan los de exactamente hace una semana, y que se muestren todos los dias, no los que tienen solo registros
+  //   const fecha = new Date(val.fecha).toISOString().split("T")[0];
+
+  //   const hoy = new Date();
+  //   const semanaPasada = new Date();
+
+  //   semanaPasada.setDate(hoy.getDate() - 7);
+  //   console.log(semanaPasada)
+
+  //   if (new Date (val.fecha) >= semanaPasada ) {
+  //     const minutos = Number(val.tiempo) || 0;
+
+  //     if (acc[fecha]) {
+  //       acc[fecha] += minutos;
+  //     } else {
+  //       acc[fecha] = minutos;
+  //     }
+  //   }
+  //   return acc;
+  // };
+
+  //const resultadoGraficaMinutos = registros.reduce(callbackMinutos, {});
+  // const etiquetas2 = Object.keys(resultadoGraficaMinutos).sort();
+  // const datos2 = Object.values(resultadoGraficaMinutos);
+
+  // Gráfico de minutos de los últimos siete días: se deberá mostrar la cantidad de minutos ejercitados cada día en la última semana.
+
+  const callbackMinutos = (acc, val) => {
     const fecha = new Date(val.fecha).toISOString().split("T")[0];
 
     const hoy = new Date();
     const semanaPasada = new Date();
-
     semanaPasada.setDate(hoy.getDate() - 7);
-    console.log(semanaPasada)
 
-    if (new Date (val.fecha) >= semanaPasada ) {
-      const minutos = Number(val.tiempo) || 0; 
-  
+    if (new Date(val.fecha) >= semanaPasada) {
+      const minutos = Number(val.tiempo) || 0;
+
       if (acc[fecha]) {
-        acc[fecha] += minutos; 
+        acc[fecha] += minutos;
       } else {
-        acc[fecha] = minutos; 
+        acc[fecha] = minutos;
       }
     }
     return acc;
   };
 
-  const resultado = registros.reduce(callback, {});
   const resultadoGraficaMinutos = registros.reduce(callbackMinutos, {});
+  const hoy = new Date();
+  const etiquetas2 = [];
+  const datos2 = [];
 
-  const idActividades = Object.keys(resultado);
-  const datos = Object.values(resultado);
-
-  const etiquetas2 = Object.keys(resultadoGraficaMinutos).sort();
-  const datos2 = Object.values(resultadoGraficaMinutos);
-
-  const etiquetas = idActividades.map((id) => convertirNombreActividad(id));
+  for (let i = 6; i >= 0; i--) {
+    const fecha = new Date();
+    fecha.setDate(hoy.getDate() - i);
+    const fechaStr = fecha.toISOString().split("T")[0];
+    etiquetas2.push(fechaStr);
+    datos2.push(resultadoGraficaMinutos[fechaStr] || 0);
+  }
 
   return (
     <div>
       <Grafica
-        etiquetas={etiquetas}
-        datos={datos}
+        etiquetas={cantSesiones}
+        datos={actividades}
         nombreGrafica="Sesiones por Actividad"
         nombreDatos="Cantidad de Sesiones"
       />
       <Grafica
         etiquetas={etiquetas2}
         datos={datos2}
-        nombreGrafica="Minutos por día"
+        nombreGrafica="Minutos de actividad por día"
         nombreDatos="Cantidad de minutos"
       />
     </div>
