@@ -3,7 +3,7 @@
 import React from "react";
 import Grafica from "./Grafica";
 import { useSelector } from "react-redux";
-import { Container } from "@mui/material"; 
+import { Container } from "@mui/material";
 
 const useActividades = () => {
   const listaActividades = useSelector((state) => state.sliceActividades);
@@ -53,7 +53,7 @@ const GraficasCompletadas = () => {
     }
     return acc;
   };
-  
+
   const resultado = registros.reduce(callback, {});
   const idActividades = Object.keys(resultado);
   const actividades = Object.values(resultado);
@@ -79,7 +79,9 @@ const GraficasCompletadas = () => {
   };
 
   const resultadoGraficaMinutos = registros.reduce(callbackMinutos, {});
-  const { etiquetas2, datos2 } = generarEtiquetasYDatos(resultadoGraficaMinutos);
+  const { etiquetas2, datos2 } = generarEtiquetasYDatos(
+    resultadoGraficaMinutos
+  );
 
   return (
     <Container

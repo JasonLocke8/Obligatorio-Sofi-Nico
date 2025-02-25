@@ -88,8 +88,14 @@ const Dashboard = () => {
         position="static"
         sx={{ width: "100%", backgroundColor: "#ffffff", boxShadow: "none" }}
       >
-        <Toolbar sx={{ display: "flex", justifyContent: "space-between", padding: "0 !important" }}>
-          <Typography variant="h6" sx={{ color: "#1976d2"}}>
+        <Toolbar
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            padding: "0 !important",
+          }}
+        >
+          <Typography variant="h6" sx={{ color: "#1976d2" }}>
             FITNESs APP
           </Typography>
           <Box>
@@ -98,7 +104,11 @@ const Dashboard = () => {
         </Toolbar>
       </AppBar>
       <Box>
-        <Typography component="h1" variant="h1" sx={{ fontSize: "2em", marginTop: "20px", marginBottom: "20px" }}>
+        <Typography
+          component="h1"
+          variant="h1"
+          sx={{ fontSize: "2em", marginTop: "20px", marginBottom: "20px" }}
+        >
           Dashboard
         </Typography>
         {mostrarAlert && (
@@ -106,7 +116,11 @@ const Dashboard = () => {
         )}
         <FormRegistroActividad />
         <Listado />
-        <Typography component="h1" variant="h1" sx={{ fontSize: "2em", marginTop: "20px", marginBottom: "20px" }}>
+        <Typography
+          component="h1"
+          variant="h1"
+          sx={{ fontSize: "2em", marginTop: "20px", marginBottom: "20px" }}
+        >
           Tiempo registrado
         </Typography>
         <Box display="flex" justifyContent="space-between">
@@ -118,7 +132,11 @@ const Dashboard = () => {
           </Box>
         </Box>
         <EvaluacionPersonal />
-        <Typography component="h1" variant="h1" sx={{ fontSize: "2em", marginTop: "20px", marginBottom: "20px" }}>
+        <Typography
+          component="h1"
+          variant="h1"
+          sx={{ fontSize: "2em", marginTop: "20px", marginBottom: "20px" }}
+        >
           Estadísticas
         </Typography>
         <GraficasCompletadas />

@@ -12,13 +12,11 @@ import {
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import { loginFetch } from "../services/loginFetch";
 import { useNavigate } from "react-router-dom";
-import Alert from '@mui/material/Alert';
+import Alert from "@mui/material/Alert";
 
 const LoginForm = () => {
   const navigate = useNavigate();
-  const [username, setUsername] = useState(""); // crea una variable de estado llamada username y guarda el valor del nombre de usuario
-  // crea una función setUsername, que sirve para actualizar el valor de username.
-  // El estado inicial es '' (una cadena vacía), es decir que cuando se carga el componente, username está vacío.
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [deshabilitar, setDeshabilitar] = useState(true);
 
@@ -35,15 +33,12 @@ const LoginForm = () => {
     setDeshabilitar(username === "" || password === "");
   }, [username, password]);
 
-
-
   const realizarLoginApi = async () => {
-
     localStorage.clear();
 
     const datos = await loginFetch(username, password);
 
-    if (datos.codigo === 200) {     
+    if (datos.codigo === 200) {
       const apiKey = datos.apiKey;
       const id = datos.id;
 
@@ -70,8 +65,7 @@ const LoginForm = () => {
 
   return (
     <Container component="main" maxWidth="xs">
-
-      {mostrarAlert && <Alert severity="error"> {mensajeDeError} </Alert> }
+      {mostrarAlert && <Alert severity="error"> {mensajeDeError} </Alert>}
 
       <Box
         sx={{

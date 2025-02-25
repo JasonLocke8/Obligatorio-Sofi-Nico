@@ -4,13 +4,9 @@ import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Card, Typography, CardContent } from "@mui/material";
 
-
 const TiempoTotal = () => {
-  // constante que va a guardar el tiempo
   const [tiempoTotal, setTiempoTotal] = useState(0);
-  //let tiempoTotal = 0;
 
-  // traer la lista de registros actual
   const registros = useSelector((state) => state.sliceRegistros);
 
   useEffect(() => {
@@ -22,7 +18,15 @@ const TiempoTotal = () => {
   }, [registros]);
 
   return (
-    <Card sx={{ backgroundColor: 'rgba(0, 191, 255, 0.2)', marginBottom: 2, marginTop: 2, boxShadow: 'none', borderRadius: '25px' }}>
+    <Card
+      sx={{
+        backgroundColor: "rgba(0, 191, 255, 0.2)",
+        marginBottom: 2,
+        marginTop: 2,
+        boxShadow: "none",
+        borderRadius: "25px",
+      }}
+    >
       <CardContent>
         <Typography variant="h6" component="div">
           Tiempo total

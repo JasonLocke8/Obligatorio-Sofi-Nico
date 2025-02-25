@@ -16,7 +16,7 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import { registroFetch } from "../services/registroFetch";
 import { obtenerPaises } from "../services/obtenerPaises";
 import { useNavigate } from "react-router-dom";
-import Alert from '@mui/material/Alert';
+import Alert from "@mui/material/Alert";
 
 const FormRegistro = () => {
   const navigate = useNavigate();
@@ -41,8 +41,6 @@ const FormRegistro = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // console.log(formData);
-
     if (
       formData.usuario === "" ||
       formData.password === "" ||
@@ -62,15 +60,13 @@ const FormRegistro = () => {
     );
 
     if (datos.codigo === 200) {
-
       localStorage.setItem("apiKey", datos.apiKey);
       localStorage.setItem("id", datos.id);
 
       navigate("/dashboard");
-      
-    } else{
+    } else {
       setMostrarAlert(true);
-      setErrorMensaje(datos.mensaje)
+      setErrorMensaje(datos.mensaje);
       const timer = setTimeout(() => {
         setMostrarAlert(false);
       }, 5000);
@@ -84,10 +80,10 @@ const FormRegistro = () => {
   const cargarPaises = async () => {
     try {
       const cargarPaisesSelect = await obtenerPaises();
-      if (cargarPaisesSelect.codigo === 200){
+      if (cargarPaisesSelect.codigo === 200) {
         setPaises(cargarPaisesSelect.paises);
       } else {
-        setErrorMensaje("Error al cargar los paises.")
+        setErrorMensaje("Error al cargar los paises.");
       }
     } catch (error) {
       console.error("Error fetching los paises:", error);

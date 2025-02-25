@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 const urlAPI = "https://movetrack.develotion.com/";
 
 export const obtenerRegistros = async () => {
@@ -17,7 +16,6 @@ export const obtenerRegistros = async () => {
       return response.json();
     })
     .then((data) => {
-      console.log(data);
       return data.registros;
     })
     .catch((error) => {

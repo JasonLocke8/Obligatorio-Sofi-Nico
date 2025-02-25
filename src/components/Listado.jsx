@@ -80,7 +80,13 @@ const Listado = () => {
 
   return (
     <div>
-      <Container sx={{ display: "flex", justifyContent: "space-between", padding: "0 !important" }}>
+      <Container
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          padding: "0 !important",
+        }}
+      >
         <Box
           sx={{
             display: "flex",
@@ -171,43 +177,43 @@ const Listado = () => {
                 ? actividad.imagen
                 : `${registro.idActividad}.png`;
 
-                return (
+              return (
                 <TableRow
                   key={registro.id}
                   sx={{ borderBottom: "1px solid #e0e0e0" }}
                 >
                   <TableCell style={{ display: "flex", alignItems: "center" }}>
-                  <img
-                  src={`${urlImagenes}${imagen}.png`}
-                  alt="icono"
-                  style={{ marginRight: "10px", width: "60px" }}
-                  />
-                  {nombreActividad}
+                    <img
+                      src={`${urlImagenes}${imagen}.png`}
+                      alt="icono"
+                      style={{ marginRight: "10px", width: "60px" }}
+                    />
+                    {nombreActividad}
                   </TableCell>
                   <TableCell align="right">
-                  <Button
-                  variant="contained"
-                  color="primary"
-                  id={registro.id}
-                  onClick={handleEliminarRegistro}
-                  sx={{
-                  backgroundColor: "rgba(0, 191, 255, 0.2)",
-                  color: "#383838",
-                  borderRadius: "25px",
-                  textTransform: "none",
-                  boxShadow: "none",
-                  "&:hover": {
-                    boxShadow: "none",
-                    borderColor: "#00bfff",
-                    backgroundColor: "rgba(0, 191, 255, 0.5)",
-                  },
-                  }}
-                  >
-                  Eliminar
-                  </Button>
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      id={registro.id}
+                      onClick={handleEliminarRegistro}
+                      sx={{
+                        backgroundColor: "rgba(0, 191, 255, 0.2)",
+                        color: "#383838",
+                        borderRadius: "25px",
+                        textTransform: "none",
+                        boxShadow: "none",
+                        "&:hover": {
+                          boxShadow: "none",
+                          borderColor: "#00bfff",
+                          backgroundColor: "rgba(0, 191, 255, 0.5)",
+                        },
+                      }}
+                    >
+                      Eliminar
+                    </Button>
                   </TableCell>
                 </TableRow>
-                );
+              );
             })}
           </TableBody>
         </Table>

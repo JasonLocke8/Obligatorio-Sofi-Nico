@@ -49,15 +49,12 @@ const FormRegistroActividad = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const fechaHoy = new Date(); 
+    const fechaHoy = new Date();
 
     const fechaElegida = new Date(fecha + "T00:00:00");
 
-    console.log(fechaElegida)
-
-
     const duracionValida = duracion > 0;
-    const fechaValida = fechaElegida <= fechaHoy; // validar que la fecha tiene que ser menor o igual o hoy
+    const fechaValida = fechaElegida <= fechaHoy;
 
     setErrorDuracion(!duracionValida);
     setErrorFecha(!fechaValida);
@@ -68,8 +65,6 @@ const FormRegistroActividad = () => {
   };
 
   const realizarRegistroActividad = async () => {
- 
-
     const respuesta = await fetch(
       `https://movetrack.develotion.com/registros.php`,
       {

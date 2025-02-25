@@ -9,7 +9,6 @@ const EvolucionPersonal = () => {
   const [tiempoTotal, setTiempoTotal] = useState(0);
   const [mensaje, setMensaje] = useState("");
 
-  // traer la lista de registros actual
   const registros = useSelector((state) => state.sliceRegistros);
 
   useEffect(() => {
@@ -38,8 +37,16 @@ const EvolucionPersonal = () => {
   }, [registros]);
 
   return (
-    <Card sx={{ backgroundColor: 'rgba(0, 191, 255, 0.2)', boxShadow: 'none', borderRadius: '25px' }}>
-      <CardContent sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+    <Card
+      sx={{
+        backgroundColor: "rgba(0, 191, 255, 0.2)",
+        boxShadow: "none",
+        borderRadius: "25px",
+      }}
+    >
+      <CardContent
+        sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
+      >
         <Typography variant="h4" sx={{ mt: 2 }}>
           {mensaje}
         </Typography>
