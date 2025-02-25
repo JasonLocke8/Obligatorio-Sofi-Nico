@@ -22,15 +22,12 @@ export const registroActividad = async (idActividad, tiempo, fecha) => {
     .then((data) => {
       if (data.codigo === 200) {
         console.log("Actividad registrada con éxito:", data);
-        //alert("Actividad registrada con éxito");
         return data;
       } else {
         console.error("Error al registrar actividad:", data);
-        //alert(data.mensaje);
       }
     })
     .catch((error) => {
       console.error("Error en la solicitud:", error);
-      //alert('Error en la solicitud');
     });
 };

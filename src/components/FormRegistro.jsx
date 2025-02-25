@@ -1,9 +1,5 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
-/*import CampoInput from './CampoInput';
-import Boton from './Boton';
-import Label from './Label';
-import Select from './Select';*/
 import {
   TextField,
   Button,
@@ -88,7 +84,11 @@ const FormRegistro = () => {
   const cargarPaises = async () => {
     try {
       const cargarPaisesSelect = await obtenerPaises();
-      setPaises(cargarPaisesSelect);
+      if (cargarPaisesSelect.codigo === 200){
+        setPaises(cargarPaisesSelect.paises);
+      } else {
+        setErrorMensaje("Error al cargar los paises.")
+      }
     } catch (error) {
       console.error("Error fetching los paises:", error);
     }

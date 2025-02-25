@@ -1,6 +1,4 @@
 const urlAPI = "https://movetrack.develotion.com/";
-// const apikey = localStorage.getItem('apiKey'); 
-// const iduser = localStorage.getItem('id'); 
 
 export const eliminarRegistro = async(idRegistro, apikey, iduser) => {
     return fetch(`${urlAPI}registros.php?idRegistro=${idRegistro}`, {
@@ -15,10 +13,9 @@ export const eliminarRegistro = async(idRegistro, apikey, iduser) => {
         return response.json();
     })
     .then(data => {
-        return data; // CAPAZ HAY QUE PONER data.nombre o algo asi
+        return data; 
     })
     .catch(error => {
         console.error('Error en la solicitud:', error);
-        //alert('Error en la solicitud');
     });
 }

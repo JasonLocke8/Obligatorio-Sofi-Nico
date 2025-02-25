@@ -15,11 +15,10 @@ export const obtenerUsuariosPorPais = async () => {
         return response.json();
     })
     .then(data => {
-        return data; // CAPAZ HAY QUE PONER algo mas
+        return data; 
     })
     .catch(error => {
         console.error('Error en la solicitud:', error);
-        //alert('Error en la solicitud');
     });
 
 }

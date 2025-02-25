@@ -11,15 +11,13 @@ export const obtenerPaises = async () => {
         return response.json();
     })
     .then(data => {
-        return data.paises; 
+        return data; 
     })
     .catch(error => {
         console.error('Error en la solicitud:', error);
-        //alert('Error en la solicitud');
     })
     .catch(error => {
         console.error('Error en la solicitud:', error);
-        //alert('Error en la solicitud');
     });
     
 }

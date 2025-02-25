@@ -49,8 +49,12 @@ const FormRegistroActividad = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const fechaHoy = new Date();
-    const fechaElegida = new Date(fecha);
+    const fechaHoy = new Date(); 
+
+    const fechaElegida = new Date(fecha + "T00:00:00");
+
+    console.log(fechaElegida)
+
 
     const duracionValida = duracion > 0;
     const fechaValida = fechaElegida <= fechaHoy; // validar que la fecha tiene que ser menor o igual o hoy
@@ -64,7 +68,8 @@ const FormRegistroActividad = () => {
   };
 
   const realizarRegistroActividad = async () => {
-    // aca va la logica de llamar a la api para agregar la tarea
+ 
+
     const respuesta = await fetch(
       `https://movetrack.develotion.com/registros.php`,
       {
@@ -88,7 +93,6 @@ const FormRegistroActividad = () => {
       });
 
     if (respuesta.codigo === 200) {
-      // agregue esto, antes no se actualizaba bien porque la api solo nos devuelve codigo, id de registro y un mnsj. de esta forma si le pasamos al estado algo de la forma que tiene que ser para mostrarlo en el listado despues
       const nuevoRegistro = {
         id: respuesta.idRegistro,
         idActividad: idActividad,

@@ -21,8 +21,6 @@ const TiempoTotal = () => {
     setTiempoTotal(total);
   }, [registros]);
 
-  // se deberá mostrar el total de tiempo en minutos insumido en sesiones hasta el momento.
-
   return (
     <Card sx={{ backgroundColor: 'rgba(0, 191, 255, 0.2)', marginBottom: 2, marginTop: 2, boxShadow: 'none', borderRadius: '25px' }}>
       <CardContent>

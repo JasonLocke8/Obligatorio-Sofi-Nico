@@ -36,12 +36,10 @@ const Listado = () => {
         localStorage.getItem("apiKey"),
         localStorage.getItem("id")
       );
-      if (resultado.codigo == 200) {
+      if (resultado.codigo === 200) {
         dispatch(eliminarRedux(e.target.id));
-        // console.log("Registro eliminado correctamente");
       } else {
         console.error("Error al eliminar el registro");
-        console.log(resultado);
       }
     } catch (error) {
       console.error("Error al eliminar el registro:", error);

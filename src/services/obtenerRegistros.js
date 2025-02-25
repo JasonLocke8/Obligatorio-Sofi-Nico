@@ -4,8 +4,6 @@ const urlAPI = "https://movetrack.develotion.com/";
 export const obtenerRegistros = async () => {
   const apikey = localStorage.getItem("apiKey");
   const iduser = localStorage.getItem("id");
-  //   console.log(iduser);
-  //   console.log(apikey);
 
   return fetch(`${urlAPI}registros.php?idUsuario=${iduser}`, {
     method: "GET",
@@ -16,7 +14,6 @@ export const obtenerRegistros = async () => {
     },
   })
     .then((response) => {
-      //console.log(response);
       return response.json();
     })
     .then((data) => {
@@ -25,6 +22,5 @@ export const obtenerRegistros = async () => {
     })
     .catch((error) => {
       console.error("Error en la solicitud:", error);
-      //alert('Error en la solicitud');
     });
 };

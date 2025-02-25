@@ -28,7 +28,6 @@ const Dashboard = () => {
   const [mostrarAlert, setMostrarAlert] = useState(true);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  //const [actividades, setActividades] = useState([]);
 
   const apikey = localStorage.getItem("apiKey");
   const iduser = localStorage.getItem("id");
@@ -70,34 +69,6 @@ const Dashboard = () => {
         });
     }
   }, [apikey, iduser, dispatch, navigate]);
-
-  // useEffect(() => {
-  //   /*const cargarActividades = async () => {
-  //     try {
-  //       const actividades = await obtenerActividades();
-  //       setActividades(actividades);
-  //     } catch (error) {
-  //       console.error("Error al obtener las actividades:", error);
-  //     }
-  //   };
-  //   cargarActividades();*/
-  //   fetch(`https://movetrack.develotion.com/actividades.php`, {
-  //     method: "GET",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       apikey: apikey,
-  //       iduser: iduser,
-  //     },
-  //   })
-  //     .then((response) => {
-  //       return response.json();
-  //     })
-  //     .then((data) => {
-  //       if (data.codigo === 200) {
-  //         dispatch(cargarActividadesIniciales(data.actividades));
-  //       }
-  //     });
-  // }, []);
 
   useEffect(() => {
     const cargarActividades = async () => {

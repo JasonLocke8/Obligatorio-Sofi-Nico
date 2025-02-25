@@ -18,7 +18,6 @@ export const registroFetch = async (usuario, password, idPais) => {
     })
     .catch(error => {
         console.error('Error en la solicitud:', error);
-        //alert('Error en la solicitud');
         return error;
     });
 }

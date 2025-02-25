@@ -19,14 +19,9 @@ const EvolucionPersonal = () => {
     const hoy = new Date();
     const ayer = new Date();
     ayer.setDate(hoy.getDate() - 1);
-    // console.log(hoy)
-    // console.log(ayer)
 
     const hoyStr = hoy.toISOString().split("T")[0];
     const ayerStr = ayer.toISOString().split("T")[0];
-
-    // console.log(hoyStr)
-    // console.log(ayerStr)
 
     registros.forEach((registro) => {
       const registroFecha = new Date(registro.fecha)
