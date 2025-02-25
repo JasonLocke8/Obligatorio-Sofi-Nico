@@ -13,6 +13,7 @@ import {
   MenuItem,
   Box,
   Typography,
+  Grid
 } from "@mui/material";
 import { obtenerActividades } from "../services/obtenerActividades";
 import { agregarRegistro } from "../redux/features/sliceRegistros";
@@ -101,41 +102,10 @@ const FormRegistroActividad = () => {
   };
 
   return (
-    /*
-        <form onSubmit={handleSubmit}>
-            <Label text={"Actividad: "} htmlFor="actividad"></Label>
-            <Select options={actividades} id="actividad" name="actividad" value={idActividad} onChange={(e) => setActividad(e.target.value)} atributo="nombre"  />
-
-            <Label text={"Duracion: "} htmlFor={"duracion"}></Label>
-            <CampoInput type="number" placeholder="" value={duracion} onChange={(e) => setDuracion(e.target.value)} name="duracion"/>
-
-
-            <Label text={"Fecha: "} htmlFor={"fecha"}></Label>
-            <CampoInput type="date" placeholder="" value={fecha} onChange={(e) => setFecha(e.target.value)} name="fecha"/>
-
-            <Boton text="Registrar"/>
-        </form>*/
-    <Box
-      component="form"
-      onSubmit={handleSubmit}
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        gap: 2,
-        width: "100%",
-        maxWidth: 400,
-        mx: "auto",
-        p: 3,
-        bgcolor: "white",
-        boxShadow: 2,
-        borderRadius: 2,
-      }}
-    >
-      <Typography variant="h5" textAlign="center" gutterBottom>
-        Agregar registro
-      </Typography>
-
-      {/* Selección de actividad */}
+    <Grid container spacing={2} alignItems="center">
+    
+    {/* Selección de actividad */}
+    <Grid item xs={12} sm={3}>
       <FormControl fullWidth required>
         <InputLabel>Actividad</InputLabel>
         <Select
@@ -149,8 +119,10 @@ const FormRegistroActividad = () => {
           ))}
         </Select>
       </FormControl>
+    </Grid>
 
-      {/* Campo Duración */}
+    {/* Campo Duración */}
+    <Grid item xs={12} sm={3}>
       <TextField
         type="number"
         label="Duración (minutos)"
@@ -158,28 +130,35 @@ const FormRegistroActividad = () => {
         onChange={(e) => setDuracion(e.target.value)}
         fullWidth
         error={errorDuracion}
-        helperText={errorDuracion ? "La duración debe ser mayor a 0" : ""}
+        helperText={errorDuracion ? "Debe ser mayor a 0" : ""}
         required
       />
+    </Grid>
 
-      {/* Campo Fecha */}
+    {/* Campo Fecha */}
+    <Grid item xs={12} sm={3}>
       <TextField
         type="date"
         label="Fecha"
         value={fecha}
         onChange={(e) => setFecha(e.target.value)}
         fullWidth
-        InputLabelProps={{ shrink: true }} // no se si va
+        InputLabelProps={{ shrink: true }}
         error={errorFecha}
-        helperText={errorFecha ? "La fecha no puede ser futura" : ""}
+        helperText={errorFecha ? "No puede ser futura" : ""}
         required
       />
+    </Grid>
 
-      {/* Botón de Enviar */}
-      <Button type="submit" variant="contained" color="primary" fullWidth>
+    {/* Botón de Enviar alineado a la derecha */}
+    <Grid item xs={12} sm={3} display="flex" justifyContent="flex-end">
+      <Button type="submit" variant="contained" color="primary" sx={{ px: 4 }}>
         Registrar
       </Button>
-    </Box>
+    </Grid>
+
+    </Grid>
+
   );
 };
 export default FormRegistroActividad;

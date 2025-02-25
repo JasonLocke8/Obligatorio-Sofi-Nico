@@ -15,6 +15,10 @@ import EvaluacionPersonal from "./EvaluacionPersonal";
 import { obtenerActividades } from "../services/obtenerActividades";
 import GraficasCompletadas from "./GraficasCompletadas";
 
+//Agregado recien
+import { AppBar, Toolbar, IconButton } from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
+
 const Dashboard = () => {
   const [mostrarAlert, setMostrarAlert] = useState(true);
   const navigate = useNavigate();
@@ -104,22 +108,29 @@ const Dashboard = () => {
 
   return (
     <Container>
-      <Box>
-        {mostrarAlert && (
-          <Alert severity="success">Bienvenido a tu dashboard</Alert>
-        )}
-        <Logout></Logout>
-        <EvaluacionPersonal></EvaluacionPersonal>
-        <Typography component="h1" variant="h1">
+    <AppBar position="static">
+      <Toolbar>
+        <Typography variant="h6" style={{ flexGrow: 1 }}>
           Dashboard
         </Typography>
-        <FormRegistroActividad />
-        <Listado />
-        <TiempoTotal />
-        <TiempoDia />
-        <GraficasCompletadas />
-      </Box>
-    </Container>
+        <Logout />
+      </Toolbar>
+    </AppBar>
+    <Box>
+      {mostrarAlert && (
+        <Alert severity="success">Bienvenido a tu dashboard</Alert>
+      )}
+      <EvaluacionPersonal />
+      <Typography component="h1" variant="h1">
+        Dashboard
+      </Typography>
+      <FormRegistroActividad />
+      <Listado />
+      <TiempoTotal />
+      <TiempoDia />
+      <GraficasCompletadas />
+    </Box>
+  </Container>
   );
 };
 
