@@ -15,16 +15,17 @@ FITNESs APP es un proyecto desarrollado por Sofía Villanueva y Nicolás Gonzál
 - **CSS3**
 - **JavaScript**
 - **React**
+- **Redux**
 
 ## Instalación
 
 1. Clona el repositorio:
     ```bash
-    git clone https://github.com/usuario/fitness-app.git
+    git clone https://github.com/JasonLocke8/Obligatorio-Sofi-Nico.git
     ```
 2. Navega al directorio del proyecto:
     ```bash
-    cd fitness-app
+    cd Obligatorio-Sofi-Nico
     ```
 3. Instala las dependencias:
     ```bash
@@ -32,7 +33,7 @@ FITNESs APP es un proyecto desarrollado por Sofía Villanueva y Nicolás Gonzál
     ```
 4. Inicia la aplicación:
     ```bash
-    npm start
+    npm run dev
     ```
 
 ## Autores
