@@ -22,8 +22,7 @@ ChartJS.register(
     Legend
 );
 
-
-const Grafica = ({ etiquetas, datos, nombreGrafica, nombreDatos }) => {
+const Grafica = ({ etiquetas, datos, nombreGrafica, nombreDatos, color }) => {
 
     const options = {
         responsive: true,
@@ -44,7 +43,7 @@ const Grafica = ({ etiquetas, datos, nombreGrafica, nombreDatos }) => {
             {
                 label: `${nombreDatos ? nombreDatos : "Datos"}`,
                 data: datos,
-                backgroundColor: 'rgba(0, 0, 255, 1)',
+                backgroundColor: color || 'rgba(0, 0, 255, 1)',
             }
         ],
     };
@@ -52,4 +51,4 @@ const Grafica = ({ etiquetas, datos, nombreGrafica, nombreDatos }) => {
     return <Bar options={options} data={data} />;
 }
 
-export default Grafica
+export default Grafica;

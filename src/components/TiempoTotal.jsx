@@ -24,9 +24,9 @@ const TiempoTotal = () => {
   // se deberá mostrar el total de tiempo en minutos insumido en sesiones hasta el momento.
 
   return (
-    <Card>
+    <Card sx={{ backgroundColor: 'rgba(0, 191, 255, 0.2)', marginBottom: 2, marginTop: 2, boxShadow: 'none', borderRadius: '25px' }}>
       <CardContent>
-      <Typography variant="h6" component="div">
+        <Typography variant="h6" component="div">
           Tiempo total
         </Typography>
         <Typography variant="h4" fontWeight="bold">

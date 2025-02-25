@@ -2,7 +2,6 @@
 /* eslint-disable no-unused-vars */
 
 import React from 'react';
-import ButtonCSS from './Button.module.css';
 
 const Boton = ({ text, onClick, disabled }) => {
   return (

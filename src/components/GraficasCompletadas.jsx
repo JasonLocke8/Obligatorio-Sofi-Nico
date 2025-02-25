@@ -3,6 +3,7 @@
 import React from "react";
 import Grafica from "./Grafica";
 import { useSelector } from "react-redux";
+import { Container } from "@mui/material"; // or the appropriate library/file
 
 /* Gráfico de minutos por actividad: se deberán graficar las
 actividades de las que hay registros mostrando la cantidad
@@ -118,20 +119,32 @@ const GraficasCompletadas = () => {
   const { etiquetas2, datos2 } = generarEtiquetasYDatos(resultadoGraficaMinutos);
 
   return (
-    <div>
-      <Grafica
-        etiquetas={cantSesiones}
-        datos={actividades}
-        nombreGrafica="Sesiones por Actividad"
-        nombreDatos="Cantidad de Sesiones"
-      />
-      <Grafica
-        etiquetas={etiquetas2}
-        datos={datos2}
-        nombreGrafica="Minutos por día"
-        nombreDatos="Cantidad de minutos"
-      />
-    </div>
+    <Container
+      sx={{
+        display: "flex",
+        flexDirection: { xs: "column", lg: "row" },
+        alignItems: "center",
+      }}
+    >
+      <div style={{ flex: 1 }}>
+        <Grafica
+          etiquetas={cantSesiones}
+          datos={actividades}
+          nombreGrafica="Sesiones por Actividad"
+          nombreDatos="Cantidad de Sesiones"
+          color="#1976d2"
+        />
+      </div>
+      <div style={{ flex: 1 }}>
+        <Grafica
+          etiquetas={etiquetas2}
+          datos={datos2}
+          nombreGrafica="Minutos por día"
+          nombreDatos="Cantidad de minutos"
+          color="#1976d2"
+        />
+      </div>
+    </Container>
   );
 };
 

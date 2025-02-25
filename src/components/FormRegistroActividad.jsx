@@ -13,7 +13,7 @@ import {
   MenuItem,
   Box,
   Typography,
-  Grid
+  Grid,
 } from "@mui/material";
 import { obtenerActividades } from "../services/obtenerActividades";
 import { agregarRegistro } from "../redux/features/sliceRegistros";
@@ -87,7 +87,8 @@ const FormRegistroActividad = () => {
         return json;
       });
 
-    if (respuesta.codigo === 200) { // agregue esto, antes no se actualizaba bien porque la api solo nos devuelve codigo, id de registro y un mnsj. de esta forma si le pasamos al estado algo de la forma que tiene que ser para mostrarlo en el listado despues
+    if (respuesta.codigo === 200) {
+      // agregue esto, antes no se actualizaba bien porque la api solo nos devuelve codigo, id de registro y un mnsj. de esta forma si le pasamos al estado algo de la forma que tiene que ser para mostrarlo en el listado despues
       const nuevoRegistro = {
         id: respuesta.idRegistro,
         idActividad: idActividad,
@@ -98,67 +99,93 @@ const FormRegistroActividad = () => {
 
       dispatch(agregarRegistro(nuevoRegistro));
     }
-    
   };
 
   return (
-    <Grid container spacing={2} alignItems="center">
-    
-    {/* Selección de actividad */}
-    <Grid item xs={12} sm={3}>
-      <FormControl fullWidth required>
-        <InputLabel>Actividad</InputLabel>
-        <Select
-          value={idActividad}
-          onChange={(e) => setActividad(e.target.value)}
-        >
-          {actividades.map((actividad) => (
-            <MenuItem key={actividad.id} value={actividad.id}>
-              {actividad.nombre}
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
-    </Grid>
+    <form onSubmit={handleSubmit}>
+      <Grid container spacing={2} alignItems="center">
+        {/* Selección de actividad */}
+        <Grid item xs={12} sm={3}>
+          <FormControl fullWidth required>
+            <InputLabel
+              className="input-label"
+              sx={{
+                "&.Mui-focused, &.MuiInputLabel-shrink": {
+                  backgroundColor: "#ffffff",
+                  padding: "0 5px",
+                },
+              }}
+            >
+              Actividad
+            </InputLabel>
+            <Select
+              value={idActividad}
+              onChange={(e) => setActividad(e.target.value)}
+            >
+              {actividades.map((actividad) => (
+                <MenuItem key={actividad.id} value={actividad.id}>
+                  {actividad.nombre}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+        </Grid>
 
-    {/* Campo Duración */}
-    <Grid item xs={12} sm={3}>
-      <TextField
-        type="number"
-        label="Duración (minutos)"
-        value={duracion}
-        onChange={(e) => setDuracion(e.target.value)}
-        fullWidth
-        error={errorDuracion}
-        helperText={errorDuracion ? "Debe ser mayor a 0" : ""}
-        required
-      />
-    </Grid>
+        {/* Campo Duración */}
+        <Grid item xs={12} sm={3}>
+          <TextField
+            type="number"
+            label="Duración (minutos)"
+            value={duracion}
+            onChange={(e) => setDuracion(e.target.value)}
+            fullWidth
+            error={errorDuracion}
+            helperText={errorDuracion ? "Debe ser mayor a 0" : ""}
+            required
+          />
+        </Grid>
 
-    {/* Campo Fecha */}
-    <Grid item xs={12} sm={3}>
-      <TextField
-        type="date"
-        label="Fecha"
-        value={fecha}
-        onChange={(e) => setFecha(e.target.value)}
-        fullWidth
-        InputLabelProps={{ shrink: true }}
-        error={errorFecha}
-        helperText={errorFecha ? "No puede ser futura" : ""}
-        required
-      />
-    </Grid>
+        {/* Campo Fecha */}
+        <Grid item xs={12} sm={3}>
+          <TextField
+            type="date"
+            label="Fecha"
+            value={fecha}
+            onChange={(e) => setFecha(e.target.value)}
+            fullWidth
+            InputLabelProps={{ shrink: true }}
+            error={errorFecha}
+            helperText={errorFecha ? "No puede ser futura" : ""}
+            required
+          />
+        </Grid>
 
-    {/* Botón de Enviar alineado a la derecha */}
-    <Grid item xs={12} sm={3} display="flex" justifyContent="flex-end">
-      <Button type="submit" variant="contained" color="primary" sx={{ px: 4 }}>
-        Registrar
-      </Button>
-    </Grid>
-
-    </Grid>
-
+        {/* Botón de Enviar alineado a la derecha */}
+        <Grid item xs={12} sm={3} display="flex" justifyContent="flex-end">
+          <Button
+            className="register-button"
+            type="submit"
+            variant="contained"
+            color="primary"
+            sx={{
+              backgroundColor: "#1976d2",
+              color: "#ffffff",
+              borderRadius: "25px",
+              display: "block",
+              width: "100%",
+              margin: "0 auto",
+              textTransform: "none",
+              "&:hover": {
+                borderColor: "#00bfff",
+                backgroundColor: "#0f467e",
+              },
+            }}
+          >
+            Registrar
+          </Button>
+        </Grid>
+      </Grid>
+    </form>
   );
 };
 export default FormRegistroActividad;
